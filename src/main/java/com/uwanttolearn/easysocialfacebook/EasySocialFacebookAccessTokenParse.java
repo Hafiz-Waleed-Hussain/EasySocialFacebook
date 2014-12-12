@@ -1,4 +1,4 @@
-package com.uwanttolearn.easysocialfacebook.utilities;
+package com.uwanttolearn.easysocialfacebook;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -7,7 +7,7 @@ import android.net.Uri;
  * Created by Hafiz Waleed Hussain on 12/8/2014.
  * This class is used as AccessToken Parser Utility.
  */
-public final class EasySocialFacebookAccessTokenParse {
+final class EasySocialFacebookAccessTokenParse {
 
     /**
      * This method is used to parse the AccessToken from a RawData

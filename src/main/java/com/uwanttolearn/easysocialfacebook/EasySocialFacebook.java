@@ -1,7 +1,6 @@
 package com.uwanttolearn.easysocialfacebook;
 
 import android.app.Activity;
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 
@@ -10,15 +9,9 @@ import com.uwanttolearn.easysocial.EasySocialCredential;
 import com.uwanttolearn.easysocial.webrequests.GetWebRequest;
 import com.uwanttolearn.easysocial.webrequests.PostWebRequest;
 import com.uwanttolearn.easysocial.webrequests.WebRequest;
-import com.uwanttolearn.easysocialfacebook.utilities.EasySocialFacebookPreferenceUtility;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 
 /**
  * Created by Hafiz Waleed Hussain on 12/6/2014.
@@ -63,6 +56,17 @@ public class EasySocialFacebook {
         intent.putExtra(EasySocialAuthActivity.ACCESS_TOKEN, _EasySocialFacebookUrlManager.getAccessTokenUrl());
         activity.startActivityForResult(intent, requestCode);
     }
+
+    /**
+     * This method is used to handle the access token which we get in onActivityResult method.
+     * @param context Context of Context of the calling component.
+     * @param data Intent which get in onActivityResult method.
+     */
+    public void loginResponseHandler(Context context,Intent data){
+        String accessToken = EasySocialFacebookAccessTokenParse.parseAccessToken(data);
+        EasySocialFacebookPreferenceUtility.setAccessToken(context, accessToken);
+    }
+
 
     /**
      * UserInfoCallback interface is used to get User Information from Facebook. This
