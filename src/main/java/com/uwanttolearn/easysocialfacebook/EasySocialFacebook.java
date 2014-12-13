@@ -3,6 +3,7 @@ package com.uwanttolearn.easysocialfacebook;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
 
 import com.uwanttolearn.easysocial.EasySocialAuthActivity;
 import com.uwanttolearn.easysocial.EasySocialCredential;
@@ -159,4 +160,36 @@ public class EasySocialFacebook {
         getWebRequest.executeRequest(_EasySocialFacebookUrlManager.getFriendsUrl(context, facebookUserId));
     }
 
+
+    /**
+     * GetUserImageAsUri interface is used when we want to get user image from Facebook. This
+     * interface object we send in getUserImageAsUri method.
+     */
+    public static interface GetUserImageAsUri{void onComplete(JSONObject data);}
+
+    /**
+     * This method get the user's image from Facebook and send back to the caller
+     * using Callback GetUserImageAsUri as JSONObject or null if error occur.
+     * @param context Context of the calling component.
+     * @param getUserImageAsUri GetUserImageAsUri interface for User image data.
+     */
+    public void getUserImageAsUri(Context context, final GetUserImageAsUri getUserImageAsUri){
+        GetWebRequest getWebRequest = new GetWebRequest(new WebRequest.Callback() {
+            @Override
+            public void requestComplete(String data) {
+                try {
+                    if(data == null){
+                        getUserImageAsUri.onComplete(null);
+                    }else{
+                        JSONObject jsonObject = new JSONObject(data);
+                        getUserImageAsUri.onComplete(jsonObject);
+                    }
+                } catch (JSONException e) {
+                    getUserImageAsUri.onComplete(null);
+                    e.printStackTrace();
+                }
+            }
+        });
+        getWebRequest.executeRequest(_EasySocialFacebookUrlManager.getUserImageUrl(context));
+    }
 }

@@ -96,6 +96,19 @@ class EasySocialFacebookUrlManager {
     }
 
 
+    /**
+     * This method create Get User Image Bitmap Url and return as String
+     * @param context Context take as a parameter.
+     * @return
+     */
+
+    public String getUserImageUrl(Context context){
+        return FACEBOOK_REQUEST_URL+"me/picture?redirect=0&type=normal&width=50&height=50&"
+                +getAccessTokenAsUrlParameter(context);
+    }
+
+
+    /** Private methods*/
 
     /**
      * This method is used to take the permissions of a SocialNetwork as String array and return as
