@@ -3,7 +3,7 @@ package com.uwanttolearn.easysocialfacebook;
 import android.content.Context;
 
 import com.uwanttolearn.easysocial.EasySocialCredential;
-import com.uwanttolearn.easysocialfacebook.utilities.EasySocialFacebookPreferenceUtility;
+import com.uwanttolearn.easysocialfacebook.EasySocialFacebookPreferenceUtility;
 
 /**
  * Created by Hafiz Waleed Hussain on 12/6/2014.
@@ -84,7 +84,7 @@ class EasySocialFacebookUrlManager {
      * @return
      */
     public String getFriendsUrl(Context context, String facebookUserId){
-        return FACEBOOK_REQUEST_URL+facebookUserId+"/friends?"+getAccessTokenAsUrlParameter(context);
+        return FACEBOOK_REQUEST_URL+facebookUserId+"/friends?limit=5000&offset=0&"+getAccessTokenAsUrlParameter(context);
     }
 
     /**

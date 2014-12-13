@@ -44,6 +44,15 @@ public class EasySocialFacebook {
     }
 
     /**
+     * This method is used to check is user already login.
+     * @param context Context of the calling component.
+     * @return boolean
+     */
+    public boolean isLogin(Context context){
+        return EasySocialFacebookPreferenceUtility.getAccessToken(context) != null;
+    }
+
+    /**
      * This method is used to authenticate user from Facebook. To manage the response,
      * it is compulsory to override onActivityResult method.
      * @param activity It take activity as a reference.
@@ -110,8 +119,8 @@ public class EasySocialFacebook {
      * @param facebookUserId Facebook userId.
      * @param postInfoCallback Callback interface for message post.
      */
-    public void sendPost(Context context, String facebookUserId, final PostInfoCallback postInfoCallback){
-        String urlParams = "message="+"Hi Testing ";
+    public void sendPost(Context context, String facebookUserId, String message, final PostInfoCallback postInfoCallback){
+        String urlParams = "message="+message;
         PostWebRequest postWebRequest = new PostWebRequest(new WebRequest.Callback() {
             @Override
             public void requestComplete(String data) {
