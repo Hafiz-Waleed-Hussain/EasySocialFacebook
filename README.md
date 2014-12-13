@@ -1,6 +1,6 @@
 EasySocialFacebook
 ==================
-EasySocialFacebook is an Android module for Authentication,Sharing or anything you want. I try to make this as general as possible, so you can easily extend that. This module dependent on our EasySocial module. Which we use for Oauth2.0 authentication. You can find that on my github repo's.
+EasySocialFacebook is an Android module for Authentication,Sharing or anything you want. I try to make this as general as possible, so you can easily extend this. This module dependent on our EasySocial module. Which we use for Oauth2.0 authentication. You can find that on my github repo's.
 
 How to use.
 
